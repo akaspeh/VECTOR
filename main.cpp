@@ -4,6 +4,7 @@
 #include <string>
 #include <cstring>
 #include "DynamicArr.h"
+#include "LinkedList.h"
 using namespace std;
 
 
