@@ -6,7 +6,7 @@
 #define VECTOR_LINKEDLIST_H
 
 #include <iostream>
-
+using namespace std;
 template <typename T>
 class LinkedList {
 private:
@@ -31,6 +31,18 @@ public:
         }
         delete head;
         head = nullptr;
+        tail = nullptr;
+    }
+
+    void reverse(){
+        int size = cur+1;
+        for(int i = 0; i < size; i++){
+            T a = get(size-i-1);
+            push_back(a);
+        }
+        for(int i = 0; i < size; i++){
+            pop_front();
+        }
     }
     void push_back(T element){
         Node *newNode = new Node;
@@ -66,13 +78,20 @@ public:
     }
     T pop_front(){
         if(cur == -1){
-            std::cout << "nothing to pop\n";
+            cout << "nothing to pop\n";
             return T{};
+        }
+        else if(head == tail){
+            T a = head->data;
+            cur--;
+            delete head;
+            head = nullptr;
+            tail = nullptr;
+            return a;
         }
         else{
             T a = head->data;
             Node *temp = head->next;
-            delete head;
             head = temp;
             cur--;
             return a;
@@ -80,15 +99,24 @@ public:
     }
     T pop_back(){
         if(cur == -1){
-            std::cout << "nothing to pop\n";
+            cout << "nothing to pop\n";
             return T{};
+        }
+        else if(tail==head){
+            T a = tail->data;
+            delete head;
+            cur--;
+            head = nullptr;
+            tail = nullptr;
+            return a;
         }
         else{
             T a = tail->data;
             Node* second_last = head;
             while (second_last->next->next != nullptr)
                 second_last = second_last->next;
-            delete (second_last->next);
+            tail = second_last;
+            delete second_last->next;
             second_last->next = nullptr;
             cur--;
             return a;
@@ -97,7 +125,7 @@ public:
     void print(){
         Node* curr = head;
         while(curr != nullptr){
-            std::cout << curr->data << '\n';
+            cout << curr->data << ' ';
             curr = curr->next;
         }
     }
@@ -126,6 +154,7 @@ public:
         }
         delete head;
         head = nullptr;
+        tail = nullptr;
     }
 };
 
