@@ -4,7 +4,6 @@
 
 #ifndef VECTOR_LINKEDLIST_H
 #define VECTOR_LINKEDLIST_H
-
 #include <iostream>
 using namespace std;
 template <typename T>
