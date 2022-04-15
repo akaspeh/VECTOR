@@ -34,10 +34,7 @@ private:
     }
 public:
     //Constructor
-    DynamicArr(){
-        sizearr=1;
-        cur=-1;
-    }
+    DynamicArr():sizearr(1),cur(-1){}
     //Destructor
     ~DynamicArr(){
         delete [] Array;
@@ -79,7 +76,7 @@ public:
     }
     //-----------------//
     T get(int N){
-        if(N<sizearr){
+        if(N>=sizearr){
             return T{};
         }
         else{

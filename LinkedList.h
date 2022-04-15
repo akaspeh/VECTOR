@@ -90,8 +90,9 @@ public:
         }
         else{
             T a = head->data;
-            Node *temp = head->next;
-            head = temp;
+            Node *tmp = head;
+            head = head->next;
+            delete tmp;
             cur--;
             return a;
         }

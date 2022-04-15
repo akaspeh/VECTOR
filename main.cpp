@@ -9,8 +9,8 @@ using namespace std;
 
 
 struct Mem{
-char sample[13];
-char text[10];
+char sample[13] = "";
+char text[10] = "";
 short amountlikes;
     friend std::ostream& operator<< (std::ostream &out, const Mem &Mem);
 };
