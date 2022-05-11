@@ -147,9 +147,8 @@ int main() {
                 cout << "enter num";
                 int N;
                 cin >> N;
-                Mem Mem1 = Array.get(N);
-                Mem Mem2 = Mem{};
-                if(Mem1.sample != Mem2.sample and Mem1.text != Mem2.text  and Mem1.amountlikes != Mem2.amountlikes){
+                Mem *Mem1 = Array.get(N);
+                if(Mem1 != nullptr){
                     cout << Mem1 << '\n';
                 }
             }
@@ -161,9 +160,8 @@ int main() {
                 Array.push_front(Mem1);
             }
             if (a == "pop_front()") {
-                Mem Mem1 = Array.pop_front();
-                Mem Mem2 = Mem{};
-                if(Mem1.sample != Mem2.sample and Mem1.text != Mem2.text  and Mem1.amountlikes != Mem2.amountlikes){
+                Mem *Mem1 = Array.pop_front();
+                if(Mem1 != nullptr){
                     cout << Mem1 << '\n';
                 }
             }
@@ -201,9 +199,8 @@ int main() {
                 cout << "enter num";
                 int N;
                 cin >> N;
-                Mem Mem1 = List.get(N);
-                Mem Mem2 = Mem{};
-                if(Mem1.sample != Mem2.sample and Mem1.text != Mem2.text  and Mem1.amountlikes != Mem2.amountlikes){
+                Mem *Mem1 = List.get(N);
+                if(Mem1 != nullptr){
                     cout << Mem1 << '\n';
                 }
             }

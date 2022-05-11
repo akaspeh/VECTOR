@@ -54,18 +54,18 @@ public:
     }
     //-----------------//
     T pop_back(){
-        if(cur < 0){
-            return T{};
-        }
-        else if(cur == sizearr/2-1){
-            resize_arr(Array,'<');
-            cur--;
-            return Array[cur+1];
-        }
-        else{
-            cur--;
-            return Array[cur+1];
-        }
+            if (cur < 0) {
+                std::cerr << "nothing to pop\n";
+                return T{};
+            } else if (cur == sizearr / 2 - 1) {
+                resize_arr(Array, '<');
+                cur--;
+                return Array[cur + 1];
+            } else {
+                cur--;
+                return Array[cur + 1];
+            }
+
     }
     //-----------------//
     void print(){
@@ -75,9 +75,9 @@ public:
         }
     }
     //-----------------//
-    T get(int N){
+    T* get(int N){
         if(N>=sizearr){
-            return T{};
+            return nullptr;
         }
         else{
             return Array[N];
@@ -115,25 +115,25 @@ public:
         }
     }
     T pop_front(){
-        if(cur < 0){
-            return T{};
-        }
-        else if(cur == sizearr/2-1){
-            resize_arr(Array,'<');
-            for(int i =cur;i>=0;i--){
-                Array[i]=Array[i+1];
+            if (cur < 0){
+                std::cerr << "nothing to pop\n";
+                return T{};
             }
-            cur--;
-            return Array[0];
-        }
-        else{
-            for(int i =0;i<cur;i++){
-                Array[i]=Array[i+1];
+            else if (cur == sizearr / 2 - 1) {
+                resize_arr(Array, '<');
+                for (int i = cur; i >= 0; i--) {
+                    Array[i] = Array[i + 1];
+                }
+                cur--;
+                return Array[0];
+            } else {
+                for (int i = 0; i < cur; i++) {
+                    Array[i] = Array[i + 1];
+                }
+                cur--;
+                return Array[0];
             }
-            cur--;
-            return Array[0];
         }
-    }
 };
 
 #endif //VECTOR_DYNAMICARR_H

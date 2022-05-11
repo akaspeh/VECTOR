@@ -33,16 +33,6 @@ public:
         tail = nullptr;
     }
 
-    void reverse(){
-        int size = cur+1;
-        for(int i = 0; i < size; i++){
-            T a = get(size-i-1);
-            push_back(a);
-        }
-        for(int i = 0; i < size; i++){
-            pop_front();
-        }
-    }
     void push_back(T element){
         Node *newNode = new Node;
         newNode->data = element;
@@ -59,6 +49,7 @@ public:
             cur++;
         }
     }
+
     void push_front(T element){
         Node *newNode = new Node;
         newNode->data = element;
@@ -77,7 +68,7 @@ public:
     }
     T pop_front(){
         if(cur == -1){
-            cout << "nothing to pop\n";
+            cerr << "nothing to pop\n";
             return T{};
         }
         else if(head == tail){
@@ -96,31 +87,30 @@ public:
             cur--;
             return a;
         }
+
     }
     T pop_back(){
-        if(cur == -1){
-            cout << "nothing to pop\n";
-            return T{};
-        }
-        else if(tail==head){
-            T a = tail->data;
-            delete head;
-            cur--;
-            head = nullptr;
-            tail = nullptr;
-            return a;
-        }
-        else{
-            T a = tail->data;
-            Node* second_last = head;
-            while (second_last->next->next != nullptr)
-                second_last = second_last->next;
-            tail = second_last;
-            delete second_last->next;
-            second_last->next = nullptr;
-            cur--;
-            return a;
-        }
+            if (cur == -1) {
+                cerr << "nothing to pop\n";
+                return T{};
+            } else if (tail == head) {
+                T a = tail->data;
+                delete head;
+                cur--;
+                head = nullptr;
+                tail = nullptr;
+                return a;
+            } else {
+                T a = tail->data;
+                Node *second_last = head;
+                while (second_last->next->next != nullptr)
+                    second_last = second_last->next;
+                tail = second_last;
+                delete second_last->next;
+                second_last->next = nullptr;
+                cur--;
+                return a;
+            }
     }
     void print(){
         Node* curr = head;
@@ -132,17 +122,16 @@ public:
     int size(){
         return cur+1;
     }
-    T get(int N){
+    T* get(int N){
         if(N>cur){
-            return T{};
+            return nullptr;
         }
         else{
             Node* curr = head;
             for(int i = 0; i != N;i++){
                 curr = curr->next;
             }
-            T a = curr->data;
-            return a;
+            return curr->data;
         }
     }
     void clear(){
